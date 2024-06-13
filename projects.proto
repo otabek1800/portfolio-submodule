@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+option go_package = "genprotos/";
+
+package protos;
+import "users.proto";
+service ProjectService {
+    rpc CreateProject(Project) returns (Void) {}
+    rpc DeleteProject(ById) returns (Void) {}
+    rpc UpdateProject(Project) returns(Void){}
+    rpc GetByIdProject(ById) returns (Project) {}
+    rpc GetAllProject(Project) returns (GetAllProjects){}
+}
+
+
+message Project {
+    string id           = 1;
+    string user_id      = 2;
+    string title        = 3;
+    string description  = 4; 
+    string url          = 5;
+}
+
+message GetAllProjects {
+    repeated Project projects = 1;
+}

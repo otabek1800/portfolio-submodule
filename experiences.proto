@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "genprotos/";
+
+package protos;
+import "users.proto";
+service ExperienceService {
+    rpc CreateExperience(Experience) returns (Void) {}
+    rpc DeleteExperience(ById) returns (Void) {}
+    rpc UpdateExperience(Experience) returns(Void){}
+    rpc GetByIdExperience(ById) returns (Experience) {}
+    rpc GetAllExperience(Experience) returns (GetAllExperiences){}
+}
+
+
+message Experience {
+    string id          = 1;
+    string user_id     = 2;
+    string title       = 3;
+    string company     = 4;
+    string description = 5; 
+    string start_date  = 6;
+    string end_date    = 7;
+}
+
+message GetAllExperiences {
+    repeated Experience experiences = 1;
+}

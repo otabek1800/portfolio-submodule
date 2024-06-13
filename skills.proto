@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "genprotos/";
+
+package protos;
+import "users.proto";
+service SkillService {
+    rpc CreateSkill(Skill) returns (Void) {}
+    rpc DeleteSkill(ById) returns (Void) {}
+    rpc UpdateSkill(Skill) returns(Void){}
+    rpc GetByIdSkill(ById) returns (Skill) {}
+    rpc GetAllSkill(Skill) returns (GetAllSkills){}
+}
+
+
+message Skill {
+    string id           = 1;
+    string user_id      = 2;
+    string name         = 3;
+    string level        = 4;
+}
+
+message GetAllSkills {
+    repeated Skill restorans = 1;
+}

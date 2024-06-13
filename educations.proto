@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "genprotos/";
+
+package protos;
+import "users.proto";
+service EducationService {
+    rpc CreateEducation(Education) returns (Void) {}
+    rpc DeleteEducation(ById) returns (Void) {}
+    rpc UpdateEducation(Education) returns(Void){}
+    rpc GetByIdEducation(ById) returns (Education) {}
+    rpc GetAllEducation(Education) returns (GetAllEducations){}
+}
+
+
+message Education {
+    string id              = 1;
+    string user_id         = 2;
+    string institution     = 3;
+    string degree          = 4;
+    string field_of_study  = 5; 
+    string start_date      = 6;
+    string end_date        = 7;
+}
+
+message GetAllEducations {
+    repeated Education restorans = 1;
+}
